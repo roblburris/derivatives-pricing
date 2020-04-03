@@ -1,4 +1,3 @@
-
 class BinomialNode():
     def __init__(self, root, left_node = None, right_node = None):
         self.root = root
