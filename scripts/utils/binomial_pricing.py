@@ -1,2 +1,2 @@
+from binomial_node import BinomialNode
 
-class BinomialPricing():
