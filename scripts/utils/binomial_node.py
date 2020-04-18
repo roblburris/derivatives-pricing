@@ -1,6 +1,6 @@
 class BinomialNode():
     """
-    Definition of BinomialNode, used in a binomial pricing tree
+    Definition of BinomialNode, used in a binomial pricing tree.
     """
     def __init__(self, data, left_node = None, right_node = None):
         """
@@ -10,6 +10,7 @@ class BinomialNode():
         :param right_node: reference to another BinomialNode, set to null if not specified
         """
         self.root = data
+        self.value = None # originally set to none b/c price tree needs to be created first
         if left_node is not None and right_node is not None:
             self.left_node = left_node
             self.right_node = right_node

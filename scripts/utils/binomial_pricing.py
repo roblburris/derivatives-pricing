@@ -12,6 +12,7 @@ def binomial_pricing(spot, strike, dividend_yield, volatility, desired_length, l
     def generate_tree(node, spot, time):
         """
         Generates binomial price tree two levels at a time using recursion
+        On the final level, assigns a value to each node
         :param node: reference to BinomialNode
         :param spot: current price at the level
         :param time: current level the tree is on (time period of level is decided earlier)  
@@ -21,9 +22,12 @@ def binomial_pricing(spot, strike, dividend_yield, volatility, desired_length, l
         
         if time + 1 == desired_length:
             node.left_node.left_node = BinomialNode(spot * decrease_factor * decrease_factor)
+            node.left_node.left_node.value = np.max([node.left_node.left_node.root - strike, 0])
             node.left_node.right_node = BinomialNode(spot * decrease_factor * increase_factor)
+            node.left_node.right_node.value = np.max([node.left_node.right_node.root - strike, 0])
             node.right_node.left_node = node.left_node.right_node
             node.right_node.right_node = BinomialNode(spot * increase_factor * increase_factor)
+            node.right_node.right_node.value = np.max([node.right_node.right_node.root - strike, 0])
         else:
             node.left_node.left_node = generate_tree(BinomialNode(spot * decrease_factor * decrease_factor), spot * decrease_factor * decrease_factor, time + 2)
             node.left_node.right_node = generate_tree(BinomialNode(spot * decrease_factor * increase_factor), spot * decrease_factor * increase_factor, time + 2)
@@ -31,4 +35,9 @@ def binomial_pricing(spot, strike, dividend_yield, volatility, desired_length, l
             node.right_node.right_node = generate_tree(BinomialNode(spot * increase_factor * increase_factor), spot * increase_factor * increase_factor, time + 2)
             
         return node
+    
+    # TODO: Finish recursive method that prices the tree backwards
+    # Return final value of the option
+
+
     

@@ -1,13 +1,11 @@
-import yfinance as yf
 import yaml
 import os
-from utils.black_scholes import BlackScholes
+from utils.black_scholes import black_scholes
 
-bl = BlackScholes(153.18, 200, 0.0014, 0.3019, 0.96)
-def get_options(ticker):
-    cur_stock = yf.Ticker(ticker)
-    print(cur_stock.info)
+bl = black_scholes(153.18, 200, 0.0014, 0.3019, 0.96)
 
-with open(os.getcwd() + '/params/stocks.yml', 'r') as y:
-    print(bl.black_scholes())
+print(bl)
+
+# TODO: get API data based on YAML tickers and feed it into black-scholes and binomial pricing models
+# TODO: print black-scholes and binomial pricing determined values and whether or not the calls for the stocks are under/overvalued  
 
