@@ -1,6 +1,8 @@
 import numpy as np
 from binomial_node import BinomialNode
 
+# model
+
 def binomial_pricing(spot, strike, dividend_yield, volatility, desired_length, len_step, interest_rate):
     """
     Generates a binomial price tree for an American-Style call option
