@@ -12,7 +12,7 @@ def binomial_pricing(spot, strike, dividend_yield, volatility, desired_length, l
 
     def option_probability():
         """
-        Function used to calculate the probability of an up/down move. Meant to simuilate geometric
+        Function used to calculate the probability of an up/down move. Meant to simulate geometric
         Brownian motion
         """
         numerator = np.e ** ((interest_rate - dividend_yield) * len_step) - decrease_factor
@@ -26,7 +26,7 @@ def binomial_pricing(spot, strike, dividend_yield, volatility, desired_length, l
 
     def generate_tree(node, spot, time):
         """
-        Generates binomial price tree two levels at a time using recursion
+        Generates binomial price tree two levels at a time
         On the final level, assigns a value to each node
         :param node: reference to BinomialNode
         :param spot: current price at the level
