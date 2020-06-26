@@ -3,3 +3,9 @@
     - MSFT
     - AMZN
     - TSLA
+
+- specified_params:
+    - time_to_exp: 365
+    - percent_increase: 10  
+    - interest: 0.17
+    - desired_levels: 50
